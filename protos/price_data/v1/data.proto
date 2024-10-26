@@ -1,0 +1,48 @@
+// protoc --go_out=plugins=grpc:. *.proto
+
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+package data_api.v1;
+option go_package = "edgecom/pricedata/data_api/v1";
+
+enum Aggregation {
+  AGGREGATION_INVALID = 0;
+  AGGREGATION_MIN = 1;
+  AGGREGATION_MAX = 2;
+  AGGREGATION_AVG = 3;
+  AGGREGATION_SUM = 4;
+}
+
+message Query {
+  google.protobuf.Timestamp start = 1;
+  google.protobuf.Timestamp end = 2;
+  string window = 3;
+  Aggregation aggregation = 4;
+}
+
+message FindDataRequest {
+  Query query = 1;
+}
+
+message PriceData {
+  google.protobuf.Timestamp time = 1;
+  double value = 2;
+}
+
+message FindDataResponse {
+  repeated PriceData prices = 1;
+}
+
+message LoadDataRequest {
+}
+
+message LoadDataResponse {
+}
+
+service PriceDataService {
+  rpc FindData(FindDataRequest) returns(FindDataResponse);
+
+  // webhook api for scheduler to load data
+  rpc LoadData(LoadDataRequest) returns(LoadDataResponse);
+}

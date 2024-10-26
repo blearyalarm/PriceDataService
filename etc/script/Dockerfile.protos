@@ -1,0 +1,16 @@
+FROM golang:1.22.0-alpine
+WORKDIR /app
+
+RUN apk update && apk add --no-cache make protobuf-dev
+RUN protoc --version
+RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.3.0
+RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.32.0
+
+RUN mkdir protos
+RUN mkdir gen
+
+COPY ./protos/ protos
+
+RUN protoc --go_out=gen --proto_path=protos  --go_opt=paths=source_relative \
+        --go-grpc_out=gen --go-grpc_opt=paths=source_relative,require_unimplemented_servers=false \
+        $(find protos -iname "*.proto")

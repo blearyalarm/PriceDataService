@@ -1,0 +1,7 @@
+.idea
+.vscode
+pgdata
+vendor
+docker-compose.yml
+Makefile
+*.md

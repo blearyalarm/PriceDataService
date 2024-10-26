@@ -1,0 +1,48 @@
+SiteURL: https://demo.knoxnetworks.io
+server:
+  AppVersion: 1.0.0
+  Port: :5051
+  PprofPort: :5555
+  Mode: Development
+  ReadTimeout: 5
+  WriteTimeout: 5
+  SSL: true
+  CtxDefaultTimeout: 12
+  CSRF: true
+  Debug: true
+  MaxConnectionIdle: 5
+  Timeout: 15
+  MaxConnectionAge: 5
+  Time: 120
+  ConfirmationRequired: false
+
+mongo:
+  Uri: mongodb://root:knox4life!@localhost:27017/?maxPoolSize=20&w=majority
+
+logger:
+  DisableCaller: false
+  DisableStacktrace: false
+  Encoding: json
+  Level: debug
+
+metrics:
+  Url: 0.0.0.0:9000
+  ServiceName: user_mgmt
+
+jaeger:
+  host: 0.0.0.0:4317
+  logspans: false
+  servicename: user_mgmt
+  SamplingRatio: 0.80
+
+#jwt:
+#  ExpIn: 3600
+#  JwtSecretKey: secretkey
+
+#auth:
+#  - method: FindByID
+#    role:
+#      - admin
+
+assetClient:
+  ServerAddr: https://api.edgecomenergy.net/core/asset/3662953a-1396-4996-a1b6-99a0c5e7a5de/series
