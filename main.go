@@ -6,12 +6,12 @@ import (
 	"os"
 	"os/signal"
 
-	server "github.com/aluo/gomono/edgecom/app"
-	"github.com/aluo/gomono/edgecom/config"
-	"github.com/aluo/gomono/edgecom/helper/logger"
-	"github.com/aluo/gomono/edgecom/helper/metric"
-	"github.com/aluo/gomono/edgecom/helper/mongo"
-	"github.com/aluo/gomono/edgecom/helper/open_tel"
+	server "github.com/aluo/gomono/zeonology/app"
+	"github.com/aluo/gomono/zeonology/config"
+	"github.com/aluo/gomono/zeonology/helper/logger"
+	"github.com/aluo/gomono/zeonology/helper/metric"
+	"github.com/aluo/gomono/zeonology/helper/mongo"
+	"github.com/aluo/gomono/zeonology/helper/open_tel"
 )
 
 // Initiate all the external dependencies in main()

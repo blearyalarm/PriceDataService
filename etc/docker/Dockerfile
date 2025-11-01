@@ -1,7 +1,7 @@
 FROM golang:1.20-alpine as builder
 
-WORKDIR /tmp/edgecom
-COPY . /tmp/edgecom/
+WORKDIR /tmp/zeonology
+COPY . /tmp/zeonology/
 
 RUN apk update && apk add --no-cache make protobuf-dev
 RUN protoc --version
@@ -18,8 +18,8 @@ ENV CGO_ENABLED=0
 ENV GOOS=linux
 ENV GOARCH=amd64
 ENV GO111MODULE=on
-RUN go build /tmp/edgecom/etc/script/generate_saml_keypair.go
-RUN go build /tmp/edgecom/main.go
+RUN go build /tmp/zeonology/etc/script/generate_saml_keypair.go
+RUN go build /tmp/zeonology/main.go
 
 RUN GRPC_HEALTH_PROBE_VERSION=v0.3.1 && \
     wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 && \
@@ -30,9 +30,9 @@ FROM alpine:3.17.2
 ## ARG WorkingEnv
 WORKDIR /app
 
-COPY --from=builder /tmp/edgecom/main /app/main
+COPY --from=builder /tmp/zeonology/main /app/main
 COPY --from=builder /bin/grpc_health_probe /bin/grpc_health_probe
-COPY --from=builder /tmp/edgecom/generate_saml_keypair /app/generate_saml_keypair
+COPY --from=builder /tmp/zeonology/generate_saml_keypair /app/generate_saml_keypair
 
 # Mark main as an executable file
 RUN chmod +x /app/generate_saml_keypair

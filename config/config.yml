@@ -45,4 +45,4 @@ jaeger:
 #      - admin
 
 assetClient:
-  ServerAddr: https://api.edgecomenergy.net/core/asset/3662953a-1396-4996-a1b6-99a0c5e7a5de/series
+  ServerAddr: https://api.zeonologyenergy.net/core/asset/3662953a-1396-4996-a1b6-99a0c5e7a5de/series

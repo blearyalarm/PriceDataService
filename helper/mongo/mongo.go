@@ -6,13 +6,13 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/aluo/gomono/edgecom/config"
+	"github.com/aluo/gomono/zeonology/config"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 const (
-	DB_NAME = "edgecom"
+	DB_NAME = "zeonology"
 )
 
 // Returns new mongo client

@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "edgecom.fullname" . }}
+  name: {{ include "zeonology.fullname" . }}
   labels:
-    {{- include "edgecom.labels" . | nindent 4 }}
+    {{- include "zeonology.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "edgecom.fullname" . }}
+    name: {{ include "zeonology.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:

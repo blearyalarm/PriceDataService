@@ -9,8 +9,8 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/aluo/gomono/edgecom/config"
-	"github.com/aluo/gomono/edgecom/model"
+	"github.com/aluo/gomono/zeonology/config"
+	"github.com/aluo/gomono/zeonology/model"
 )
 
 // for json marshalling

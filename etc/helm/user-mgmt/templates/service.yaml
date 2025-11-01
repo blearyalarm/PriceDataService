@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "edgecom.fullname" . }}
+  name: {{ include "zeonology.fullname" . }}
   labels:
-    {{- include "edgecom.labels" . | nindent 4 }}
+    {{- include "zeonology.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "edgecom.selectorLabels" . | nindent 4 }}
+    {{- include "zeonology.selectorLabels" . | nindent 4 }}

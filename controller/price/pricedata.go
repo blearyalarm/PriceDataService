@@ -7,10 +7,10 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
 
-	"github.com/aluo/gomono/edgecom/config"
-	"github.com/aluo/gomono/edgecom/gateway"
-	"github.com/aluo/gomono/edgecom/model"
-	priceData "github.com/aluo/gomono/edgecom/repository/pricedata"
+	"github.com/aluo/gomono/zeonology/config"
+	"github.com/aluo/gomono/zeonology/gateway"
+	"github.com/aluo/gomono/zeonology/model"
+	priceData "github.com/aluo/gomono/zeonology/repository/pricedata"
 )
 
 type priceDataController struct {

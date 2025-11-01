@@ -1,10 +1,10 @@
 package server
 
 import (
-	"github.com/aluo/gomono/edgecom/config"
-	priceCtl "github.com/aluo/gomono/edgecom/controller/price"
-	"github.com/aluo/gomono/edgecom/gateway"
-	priceRepo "github.com/aluo/gomono/edgecom/repository/pricedata"
+	"github.com/aluo/gomono/zeonology/config"
+	priceCtl "github.com/aluo/gomono/zeonology/controller/price"
+	"github.com/aluo/gomono/zeonology/gateway"
+	priceRepo "github.com/aluo/gomono/zeonology/repository/pricedata"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 

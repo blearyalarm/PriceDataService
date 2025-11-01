@@ -9,8 +9,8 @@ import (
 	"syscall"
 	"time"
 
-	priceDataApi "github.com/aluo/api/edgecom/price_data/v1"
-	"github.com/aluo/gomono/edgecom/helper/grpc_env"
+	priceDataApi "github.com/aluo/api/zeonology/price_data/v1"
+	"github.com/aluo/gomono/zeonology/helper/grpc_env"
 	grpcMiddleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpcAuth "github.com/grpc-ecosystem/go-grpc-middleware/auth"
 	grpcZap "github.com/grpc-ecosystem/go-grpc-middleware/logging/zap"
@@ -20,8 +20,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.uber.org/zap"
 
-	"github.com/aluo/gomono/edgecom/config"
-	"github.com/aluo/gomono/edgecom/handler"
+	"github.com/aluo/gomono/zeonology/config"
+	"github.com/aluo/gomono/zeonology/handler"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/keepalive"
 	"google.golang.org/grpc/reflection"
@@ -144,7 +144,7 @@ func (s *Server) startGrpcServer(server *grpc.Server, postBootFunc func()) error
 	defer listener.Close()
 
 	go func() {
-		log.Printf("edgecom GRPC Server is listening on port: %v", s.cfg.Server.Port)
+		log.Printf("zeonology GRPC Server is listening on port: %v", s.cfg.Server.Port)
 
 		go func() {
 			// Wait a brief moment to ensure the server is ready.

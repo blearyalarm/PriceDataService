@@ -9,7 +9,7 @@ import (
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 
-	"github.com/aluo/gomono/edgecom/config"
+	"github.com/aluo/gomono/zeonology/config"
 )
 
 // For mapping config logger to app logger levels

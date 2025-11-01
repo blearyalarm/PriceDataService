@@ -5,20 +5,20 @@ import (
 	"log"
 	"time"
 
-	helper "github.com/aluo/gomono/edgecom/helper/mongo"
-	"github.com/aluo/gomono/edgecom/model"
+	helper "github.com/aluo/gomono/zeonology/helper/mongo"
+	"github.com/aluo/gomono/zeonology/model"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
 const (
-	DB_NAME         = "edgecom"
+	DB_NAME         = "zeonology"
 	COLLECTION_NAME = "priceData"
 )
 
 // Define a struct that matches the aggregation output
 type AggregationResult struct {
-	ID       struct {
+	ID struct {
 		Interval time.Time `bson:"interval"`
 	} `bson:"_id"`
 	AggValue float64 `bson:"aggValue"`
@@ -46,8 +46,6 @@ func NewPriceDataMongoRepo(client *mongo.Client) (PriceDataMongoRepo, error) {
 		priceDataCollection: collection,
 	}, nil
 }
-
-
 
 // Create implements PhotographerMongoRepo.
 func (p *priceDataMongoRepo) Create(ctx context.Context, pg []model.Entry) error {

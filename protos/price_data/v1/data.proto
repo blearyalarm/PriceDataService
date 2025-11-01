@@ -4,7 +4,7 @@ syntax = "proto3";
 import "google/protobuf/timestamp.proto";
 
 package data_api.v1;
-option go_package = "edgecom/pricedata/data_api/v1";
+option go_package = "zeonology/pricedata/data_api/v1";
 
 enum Aggregation {
   AGGREGATION_INVALID = 0;

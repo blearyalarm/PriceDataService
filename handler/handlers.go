@@ -4,9 +4,9 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
 
-	priceDataApi "github.com/aluo/api/edgecom/price_data/v1"
-	"github.com/aluo/gomono/edgecom/config"
-	"github.com/aluo/gomono/edgecom/controller/price"
+	priceDataApi "github.com/aluo/api/zeonology/price_data/v1"
+	"github.com/aluo/gomono/zeonology/config"
+	"github.com/aluo/gomono/zeonology/controller/price"
 )
 
 type priceDataApiServer struct {

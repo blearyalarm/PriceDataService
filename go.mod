@@ -1,11 +1,9 @@
-module github.com/aluo/gomono/edgecom
+module github.com/aluo/gomono/zeonology
 
-go 1.23
-
-toolchain go1.23.0
+go 1.25
 
 require (
-	github.com/aluo/api/edgecom v0.0.0-00010101000000-000000000000
+	github.com/aluo/api/zeonology v0.0.0-00010101000000-000000000000
 	github.com/go-redis/redis/v8 v8.11.4
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
@@ -25,7 +23,6 @@ require (
 	go.uber.org/zap v1.20.0
 	google.golang.org/grpc v1.67.1
 	google.golang.org/protobuf v1.35.1
-
 )
 
 require (
@@ -78,4 +75,4 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
 
-replace github.com/aluo/api/edgecom => ./.gen/protos
+replace github.com/aluo/api/zeonology => ./.gen/protos

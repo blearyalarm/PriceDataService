@@ -6,7 +6,7 @@ import (
 
 	prometheus2 "github.com/prometheus/client_golang/prometheus"
 
-	"github.com/aluo/gomono/edgecom/config"
+	"github.com/aluo/gomono/zeonology/config"
 	runtimemetrics "go.opentelemetry.io/contrib/instrumentation/runtime"
 	"go.opentelemetry.io/otel/exporters/prometheus"
 	"go.opentelemetry.io/otel/metric/global"

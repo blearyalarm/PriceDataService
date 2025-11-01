@@ -1,5 +1,13 @@
-# [Name of the service] Service
+# Price Tracking Service
+This is a Golang microservice that serves 2 GRPC APIs:
+```
+service PriceDataService {
+  rpc FindData(FindDataRequest) returns(FindDataResponse);
 
+  // webhook api for scheduler to load data
+  rpc LoadData(LoadDataRequest) returns(LoadDataResponse);
+}
+```
 
 ## Setup Dev Environment
 Follow the instruction in the parent [readme file](../README.md#setup-dev-environment).
@@ -11,8 +19,8 @@ Follow the instruction in the parent [readme file](../README.md#setup-dev-enviro
 cd .. 
 make
 
-# go back to edgecom folder
-cd edgecom
+# go back to zeonology folder
+cd zeonology
 ```
 
 2. Download dependencies
