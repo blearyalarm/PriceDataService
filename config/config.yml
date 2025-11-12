@@ -27,12 +27,12 @@ logger:
 
 metrics:
   Url: 0.0.0.0:9000
-  ServiceName: user_mgmt
+  ServiceName: price_data_service
 
 jaeger:
-  host: 0.0.0.0:4317
+  host: localhost:4317
   logspans: false
-  servicename: user_mgmt
+  servicename: price_data_service
   SamplingRatio: 0.80
 
 #jwt:
@@ -45,4 +45,4 @@ jaeger:
 #      - admin
 
 assetClient:
-  ServerAddr: https://api.zeonologyenergy.net/core/asset/3662953a-1396-4996-a1b6-99a0c5e7a5de/series
+  ServerAddr: https://api.edgecomenergy.net/core/asset/3662953a-1396-4996-a1b6-99a0c5e7a5de/series

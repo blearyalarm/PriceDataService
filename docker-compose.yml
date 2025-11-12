@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   redis:
-    image: redis:6.0.9-alpine
+    image: redis:7.4-alpine
     container_name: user_mgmt_redis
     ports:
       - "6379:6379"
@@ -11,7 +11,7 @@ services:
       - user_network
 
   envoy:
-    image: envoyproxy/envoy:v1.20.0
+    image: envoyproxy/envoy:v1.31-latest
     container_name: user_mgmt_envoy
     ports:
       - "8088:8088"
@@ -19,7 +19,7 @@ services:
       - ./etc/docker/envoy/envoy.yaml:/etc/envoy/envoy.yaml
 
   mongo:
-    image: mongo
+    image: mongo:6.0
     container_name: user_mgmt_mongo
     restart: always
     ports:
@@ -29,7 +29,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: knox4life!
 
   mongo-express:
-    image: mongo-express
+    image: mongo-express:1.0.2-20
     container_name: user_mgmt_mongo_express
     restart: always
     ports:
@@ -74,7 +74,7 @@ services:
   jaeger:
     container_name: user_mgmt_jaeger
     restart: always
-    image: jaegertracing/all-in-one:1.38
+    image: jaegertracing/all-in-one:1.74.0
     environment:
       - COLLECTOR_OTLP_ENABLED=true
     ports:

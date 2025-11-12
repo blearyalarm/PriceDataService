@@ -11,6 +11,6 @@ scrape_configs:
     static_configs:
       - targets: ["node_exporter:9100"]
 
-  - job_name: "auth-microservice"
+  - job_name: "price-data-service"
     static_configs:
-      - targets: ["host.docker.internal:7070"]
+      - targets: ["host.docker.internal:9000"]

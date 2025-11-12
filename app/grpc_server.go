@@ -9,8 +9,9 @@ import (
 	"syscall"
 	"time"
 
-	priceDataApi "github.com/aluo/api/zeonology/price_data/v1"
-	"github.com/aluo/gomono/zeonology/helper/grpc_env"
+	priceDataApi "github.com/erich/api/pricedata/price_data/v1"
+	"github.com/erich/pricetracking/helper/grpc_env"
+	"github.com/erich/pricetracking/helper/metric"
 	grpcMiddleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpcAuth "github.com/grpc-ecosystem/go-grpc-middleware/auth"
 	grpcZap "github.com/grpc-ecosystem/go-grpc-middleware/logging/zap"
@@ -20,8 +21,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.uber.org/zap"
 
-	"github.com/aluo/gomono/zeonology/config"
-	"github.com/aluo/gomono/zeonology/handler"
+	"github.com/erich/pricetracking/config"
+	"github.com/erich/pricetracking/handler"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/keepalive"
 	"google.golang.org/grpc/reflection"
@@ -119,6 +120,7 @@ func (s *Server) initGrpcServer(serverEnv grpc_env.ServerEnv) *grpc.Server {
 			grpcCtxTags.StreamServerInterceptor(),
 			otelgrpc.StreamServerInterceptor(),
 			grpcPrometheus.StreamServerInterceptor,
+			metric.StreamServerMetricsInterceptor(),
 			grpcZap.StreamServerInterceptor(s.logger, opts...),
 			grpcAuth.StreamServerInterceptor(AuthInterceptorFunc),
 			grpcRecovery.StreamServerInterceptor(),
@@ -128,6 +130,7 @@ func (s *Server) initGrpcServer(serverEnv grpc_env.ServerEnv) *grpc.Server {
 			grpcCtxTags.UnaryServerInterceptor(),
 			otelgrpc.UnaryServerInterceptor(),
 			grpcPrometheus.UnaryServerInterceptor,
+			metric.UnaryServerMetricsInterceptor(),
 			grpcZap.UnaryServerInterceptor(s.logger, opts...),
 			grpcAuth.UnaryServerInterceptor(AuthInterceptorFunc),
 			grpcRecovery.UnaryServerInterceptor(),

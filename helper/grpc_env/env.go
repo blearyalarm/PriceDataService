@@ -3,7 +3,7 @@ package grpc_env
 import (
 	"context"
 
-	"github.com/aluo/gomono/zeonology/config"
+	"github.com/erich/pricetracking/config"
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"

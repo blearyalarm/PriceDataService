@@ -69,5 +69,5 @@ docker-protos: ## generate code for protobuf
 .PHONY: docker-local
 docker-local:  ## start docker compose for local environment
 	echo "Starting local environment"
-	docker-compose -f docker-compose.yml up --build
+	docker compose -f docker-compose.yml up --build
 

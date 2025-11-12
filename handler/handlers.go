@@ -4,9 +4,9 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
 
-	priceDataApi "github.com/aluo/api/zeonology/price_data/v1"
-	"github.com/aluo/gomono/zeonology/config"
-	"github.com/aluo/gomono/zeonology/controller/price"
+	priceDataApi "github.com/erich/api/pricedata/price_data/v1"
+	"github.com/erich/pricetracking/config"
+	"github.com/erich/pricetracking/controller/price"
 )
 
 type priceDataApiServer struct {

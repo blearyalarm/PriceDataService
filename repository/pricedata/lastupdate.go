@@ -6,8 +6,8 @@ import (
 	"log"
 	"time"
 
-	helper "github.com/aluo/gomono/zeonology/helper/mongo"
-	"github.com/aluo/gomono/zeonology/model"
+	helper "github.com/erich/pricetracking/helper/mongo"
+	"github.com/erich/pricetracking/model"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"

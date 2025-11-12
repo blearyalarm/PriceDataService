@@ -6,12 +6,12 @@ import (
 	"os"
 	"os/signal"
 
-	server "github.com/aluo/gomono/zeonology/app"
-	"github.com/aluo/gomono/zeonology/config"
-	"github.com/aluo/gomono/zeonology/helper/logger"
-	"github.com/aluo/gomono/zeonology/helper/metric"
-	"github.com/aluo/gomono/zeonology/helper/mongo"
-	"github.com/aluo/gomono/zeonology/helper/open_tel"
+	server "github.com/erich/pricetracking/app"
+	"github.com/erich/pricetracking/config"
+	"github.com/erich/pricetracking/helper/logger"
+	"github.com/erich/pricetracking/helper/metric"
+	"github.com/erich/pricetracking/helper/mongo"
+	"github.com/erich/pricetracking/helper/open_tel"
 )
 
 // Initiate all the external dependencies in main()

@@ -4,8 +4,8 @@ import (
 	"errors"
 	"strconv"
 
-	price_data_api "github.com/aluo/api/zeonology/price_data/v1"
-	"github.com/aluo/gomono/zeonology/model"
+	price_data_api "github.com/erich/api/pricedata/price_data/v1"
+	"github.com/erich/pricetracking/model"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 

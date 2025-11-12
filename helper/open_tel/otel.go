@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/aluo/gomono/zeonology/config"
+	"github.com/erich/pricetracking/config"
 
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
 	"google.golang.org/grpc"

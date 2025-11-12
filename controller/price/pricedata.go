@@ -7,10 +7,10 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
 
-	"github.com/aluo/gomono/zeonology/config"
-	"github.com/aluo/gomono/zeonology/gateway"
-	"github.com/aluo/gomono/zeonology/model"
-	priceData "github.com/aluo/gomono/zeonology/repository/pricedata"
+	"github.com/erich/pricetracking/config"
+	"github.com/erich/pricetracking/gateway"
+	"github.com/erich/pricetracking/model"
+	priceData "github.com/erich/pricetracking/repository/pricedata"
 )
 
 type priceDataController struct {
@@ -40,9 +40,9 @@ func NewPriceDataController(cfg *config.Config,
 	}
 }
 
-// Create implements PhotoController.
+// Load implements PriceDataController.
 func (p *priceDataController) Load(ctx context.Context) error {
-	ctx, span := p.tracer.Start(ctx, "photoController.FindById")
+	ctx, span := p.tracer.Start(ctx, "priceController.Load")
 	defer span.End()
 
 	start, err := p.lastUpdateRepo.Get(ctx)
@@ -72,9 +72,10 @@ func (p *priceDataController) Load(ctx context.Context) error {
 	return nil
 }
 
-// FindByEventTypes implements PhotoController.
+// Find implements PriceDataController.
 func (p *priceDataController) Find(ctx context.Context, query model.Query) ([]model.Entry, error) {
-	ctx, span := p.tracer.Start(ctx, "photoController.FindById")
+	ctx, span := p.tracer.Start(ctx, "priceController.Find")
 	defer span.End()
+
 	return p.priceRepo.Find(ctx, query)
 }

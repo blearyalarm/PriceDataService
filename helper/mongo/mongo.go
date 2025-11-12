@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/aluo/gomono/zeonology/config"
+	"github.com/erich/pricetracking/config"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )

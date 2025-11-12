@@ -6,7 +6,7 @@ import (
 
 	prometheus2 "github.com/prometheus/client_golang/prometheus"
 
-	"github.com/aluo/gomono/zeonology/config"
+	"github.com/erich/pricetracking/config"
 	runtimemetrics "go.opentelemetry.io/contrib/instrumentation/runtime"
 	"go.opentelemetry.io/otel/exporters/prometheus"
 	"go.opentelemetry.io/otel/metric/global"
@@ -17,7 +17,7 @@ import (
 	selector "go.opentelemetry.io/otel/sdk/metric/selector/simple"
 )
 
-const MetricsPrefix = "user_mgmt_"
+const MetricsPrefix = "price_data_service_"
 
 func InitMetrics(cfg *config.Config) error {
 	exporter, err := initializeMetricsExporter()
@@ -26,6 +26,11 @@ func InitMetrics(cfg *config.Config) error {
 	}
 
 	if err = runtimemetrics.Start(); err != nil {
+		return err
+	}
+
+	// Initialize business metrics
+	if err = InitBusinessMetrics(); err != nil {
 		return err
 	}
 
