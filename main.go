@@ -11,7 +11,7 @@ import (
 	"github.com/erich/pricetracking/helper/logger"
 	"github.com/erich/pricetracking/helper/metric"
 	"github.com/erich/pricetracking/helper/mongo"
-	"github.com/erich/pricetracking/helper/open_tel"
+	"github.com/erich/pricetracking/helper/tracing"
 )
 
 // Initiate all the external dependencies in main()
@@ -50,7 +50,7 @@ func main() {
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer cancel()
 
-	shutdown, err := open_tel.InitOpenTelemetryCollector(cfg)
+	shutdown, err := tracing.InitOpenTelemetryCollector(cfg)
 	if err != nil {
 		log.Fatalf("failed to initiate open telemetry %v", err)
 	}
@@ -63,9 +63,16 @@ func main() {
 	log.Println("OpenTelemetry tracing connected")
 
 	//init metrics
-	if err = metric.InitMetrics(cfg); err != nil {
+	metricsShutdown, err := metric.InitMetrics(cfg)
+	if err != nil {
 		log.Fatalf("failed to initiate open telemetry metrics %v", err)
 	}
+
+	defer func() {
+		if err := metricsShutdown(ctx); err != nil {
+			log.Fatalf("failed to shutdown MeterProvider %v", err)
+		}
+	}()
 	log.Println("OpenTelemetry metrics connected")
 
 	//start grpc server

@@ -16,15 +16,15 @@ func UnaryServerMetricsInterceptor() grpc.UnaryServerInterceptor {
 		handler grpc.UnaryHandler,
 	) (interface{}, error) {
 		startTime := time.Now()
-		
+
 		// Call the handler
 		resp, err := handler(ctx, req)
-		
+
 		// Record metrics based on method
 		metrics := GetBusinessMetrics()
 		if metrics != nil {
 			duration := time.Since(startTime).Seconds()
-			
+
 			// You can add method-specific logic here
 			switch info.FullMethod {
 			case "/pricedata.price_data.v1.PriceDataService/LoadData":
@@ -43,7 +43,7 @@ func UnaryServerMetricsInterceptor() grpc.UnaryServerInterceptor {
 				}
 			}
 		}
-		
+
 		return resp, err
 	}
 }
@@ -57,15 +57,15 @@ func StreamServerMetricsInterceptor() grpc.StreamServerInterceptor {
 		handler grpc.StreamHandler,
 	) error {
 		startTime := time.Now()
-		
+
 		// Call the handler
 		err := handler(srv, ss)
-		
+
 		// Record metrics
 		metrics := GetBusinessMetrics()
 		if metrics != nil {
 			duration := time.Since(startTime).Seconds()
-			
+
 			switch info.FullMethod {
 			case "/pricedata.price_data.v1.PriceDataService/StreamData":
 				if err != nil {
@@ -75,7 +75,7 @@ func StreamServerMetricsInterceptor() grpc.StreamServerInterceptor {
 				}
 			}
 		}
-		
+
 		return err
 	}
 }

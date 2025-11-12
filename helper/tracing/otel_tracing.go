@@ -1,4 +1,4 @@
-package open_tel
+package tracing
 
 import (
 	"context"
@@ -51,7 +51,11 @@ func InitOpenTelemetryCollector(cfg *config.Config) (func(context.Context) error
 	)
 	otel.SetTracerProvider(tracerProvider)
 
-	otel.SetTextMapPropagator(propagation.TraceContext{})
+	// Set composite propagator with TraceContext and Baggage
+	otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(
+		propagation.TraceContext{},
+		propagation.Baggage{},
+	))
 
 	return tracerProvider.Shutdown, nil
 }
@@ -60,7 +64,8 @@ func initializeExporter(ctx context.Context, cfg *config.Config) (sdktrace.SpanE
 	ctx, cancel := context.WithTimeout(ctx, time.Second*10)
 	defer cancel()
 
-	conn, err := grpc.DialContext(ctx, cfg.Jaeger.Host, grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock())
+	conn, err := grpc.DialContext(ctx, cfg.Jaeger.Host,
+		grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock())
 	if err != nil {
 		return nil, fmt.Errorf("failed to create gRPC connection to collector: %w", err)
 	}
